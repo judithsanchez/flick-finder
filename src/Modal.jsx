@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API_URL = 'http://lvh.me:3000/';
+const API_URL = 'https://omdb-proxy.onrender.com';
 
 const Modal = ({ movie, onClose }) => {
   const [movieDetails, setMovieDetails] = useState(null);

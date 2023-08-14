@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Card from './Card';
 import './App.css';
 
-const API_URL = 'http://lvh.me:3000/';
+const API_URL = 'https://omdb-proxy.onrender.com';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
