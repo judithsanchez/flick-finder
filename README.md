@@ -1,8 +1,15 @@
-# React + Vite
+# Flick Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[🔗 Live preview](https://judithsanchez.github.io/flick-finder/)
 
-Currently, two official plugins are available:
+This repository contains the implementation of a movies finder.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**🔍 Keywords:** JavaScript, CSS3, HTML5, async/await, API, Git, responsive design.
+
+### 🟡 Version 1
+
+You can perform a search based on the name of the show to retrieve information.
+
+- **🌱 Next version:** Enhance responsiveness | Integrate sorting logic | Implement filters.
+
+- **👾 Bugs:** None that I am aware of, but if you encounter any, please don't hesitate to inform me!
