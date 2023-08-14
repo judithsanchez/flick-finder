@@ -20,27 +20,33 @@ function App() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="App">
-      <h1>Flick Finder</h1>
+      <h1 className="App-title">Flick Finder</h1>
       <div className="search-container">
         <input
+          className="search-input"
           type="text"
           placeholder="Search for a movie"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
-        <button onClick={handleSearch}>Search</button>
+        <button className="search-button" onClick={handleSearch}>
+          Search
+        </button>
       </div>
       {movieList.length > 0 && (
         <div className="movie-list">
-          {movieList.length > 0 && (
-            <div className="movie-list">
-              {movieList.map((movie) => (
-                <Card key={movie.imdbID} movie={movie} />
-              ))}
-            </div>
-          )}
+          {movieList.map((movie) => (
+            <Card key={movie.imdbID} movie={movie} apiUrl={API_URL} />
+          ))}
         </div>
       )}
     </div>

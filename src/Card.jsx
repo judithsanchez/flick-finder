@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
 
-const Card = ({ movie }) => {
+const Card = ({ movie, apiUrl }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
       <div className="movie-card" onClick={() => setModalOpen(true)}>
-        <img src={movie.Poster} alt={`${movie.Title} Poster`} />
-        <h2>{movie.Title}</h2>
+        <img
+          className="movie-card__image"
+          src={movie.Poster}
+          alt={`${movie.Title} Poster`}
+        />
       </div>
       {modalOpen && (
-        <Modal movie={movie} onClose={() => setModalOpen(false)}></Modal>
+        <Modal
+          movie={movie}
+          onClose={() => setModalOpen(false)}
+          apiUrl={apiUrl}
+        ></Modal>
       )}
     </>
   );

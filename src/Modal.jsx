@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-const API_URL = 'https://omdb-proxy.onrender.com';
-
-const Modal = ({ movie, onClose }) => {
+const Modal = ({ movie, onClose, apiUrl }) => {
   const [movieDetails, setMovieDetails] = useState(null);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
       const response = await fetch(
-        `${API_URL}?t=${encodeURIComponent(movie.Title)}`
+        `${apiUrl}?t=${encodeURIComponent(movie.Title)}`
       );
       const data = await response.json();
       setMovieDetails(data);
@@ -16,28 +14,38 @@ const Modal = ({ movie, onClose }) => {
 
     if (!movieDetails) {
       fetchMovieDetails();
-      //alert('making api call');
     }
-  }, []);
+  }, [movie, apiUrl, movieDetails]);
 
   return (
     <div className="modal-container">
       <div className="modal">
-        <button className="close-btn" onClick={onClose}>
+        <button className="modal__close-btn" onClick={onClose}>
           ❌
         </button>
 
         {movieDetails && (
-          <>
-            <h2>{movieDetails.Title}</h2>
-            <p>Year: {movieDetails.Year}</p>
-            <p>Runtime: {movieDetails.Runtime}</p>
-            <p>Genre: {movieDetails.Genre}</p>
-            <p>Director: {movieDetails.Director}</p>
-            <p>Actors: {movieDetails.Actors}</p>
-            <p>Plot: {movieDetails.Plot}</p>
-            <p>IMDb Rating: {movieDetails.imdbRating}</p>
-          </>
+          <div className="modal__content">
+            <img
+              className="modal__poster"
+              src={movieDetails.Poster}
+              alt={`${movieDetails.Title} Poster`}
+            />
+            <div className="modal__info">
+              <h2 className="modal__title">{movieDetails.Title}</h2>
+              <p className="modal__year">Year: {movieDetails.Year}</p>
+              <p className="modal__runtime">Runtime: {movieDetails.Runtime}</p>
+              <p className="modal__genre">Genre: {movieDetails.Genre}</p>
+              <p className="modal__director">
+                Director: {movieDetails.Director}
+              </p>
+              <p className="modal__actors">Actors: {movieDetails.Actors}</p>
+              <p className="modal__plot">Plot: {movieDetails.Plot}</p>
+              <p className="modal__rating">
+                IMDb Rating: {movieDetails.imdbRating}
+              </p>
+            </div>
+          </div>
         )}
       </div>
     </div>
